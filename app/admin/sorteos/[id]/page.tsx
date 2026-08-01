@@ -34,15 +34,21 @@ export default async function EditarSorteoPage({
           sorteoId={sorteo.id}
           tieneCodigoQR={Boolean(sorteo.codigo_qr)}
         />
+
         <SubirImagen
           sorteoId={sorteo.id}
-          tipo="resultado"
-          etiqueta="Imagen oficial del resultado"
+          tipo="numero_ganador"
+          etiqueta="Imagen del número ganador"
         />
         <SubirImagen
           sorteoId={sorteo.id}
           tipo="ganador"
           etiqueta="Foto del ganador"
+        />
+        <SubirImagen
+          sorteoId={sorteo.id}
+          tipo="vendedor"
+          etiqueta="Foto del vendedor"
         />
 
         <GaleriaImagenes
@@ -50,8 +56,16 @@ export default async function EditarSorteoPage({
           imagenes={sorteo.imagenes?.filter((img) => img.tipo === "resultado")}
         />
         <GaleriaImagenes
+          titulo="Imagen del número ganador"
+          imagenes={sorteo.imagenes?.filter((img) => img.tipo === "numero_ganador")}
+        />
+        <GaleriaImagenes
           titulo="Fotos del ganador"
           imagenes={sorteo.imagenes?.filter((img) => img.tipo === "ganador")}
+        />
+        <GaleriaImagenes
+          titulo="Fotos del vendedor"
+          imagenes={sorteo.imagenes?.filter((img) => img.tipo === "vendedor")}
         />
       </div>
     </main>

@@ -9,6 +9,7 @@ import type { Administrador } from "@/lib/types";
 const enlacesBase = [
   { href: "/admin/dashboard", label: "Sorteos" },
   { href: "/admin/sorteos/nuevo", label: "Nuevo" },
+  { href: "/admin/disenos-boletos", label: "Diseños" },
   { href: "/admin/auditoria", label: "Auditoría" },
 ];
 

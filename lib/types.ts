@@ -4,7 +4,8 @@
 export type EstadoSorteo = "borrador" | "publicado" | "oculto";
 export type FuenteSorteo = "manual" | "ocr_ia";
 export type RolAdmin = "superadmin" | "editor";
-export type TipoImagen = "resultado" | "ganador";
+export type TipoImagen = "resultado" | "ganador" | "numero_ganador" | "vendedor";
+export type TipoDisenoBoleto = "delante" | "atras";
 
 export interface PremioSecundario {
   id: number;
@@ -21,6 +22,15 @@ export interface ImagenResultado {
   proveedor: string;
   generada_por_ia: boolean;
   created_at: string;
+}
+
+export interface DisenoBoleto {
+  id: number;
+  tipo: TipoDisenoBoleto;
+  nombre: string;
+  imagen_url: string;
+  activo: boolean;
+  creado_en: string;
 }
 
 export interface CodigoQR {
@@ -40,6 +50,7 @@ export interface Sorteo {
   serie: string;
   premio_principal: string;
   video_url: string | null;
+  video_entrega_premio: string | null;
   estado: EstadoSorteo;
   creado_por: number | null;
   fuente: FuenteSorteo;
@@ -95,6 +106,7 @@ export interface SorteoFormValues {
   numero_ganador: string;
   premio_principal: string;
   video_url: string;
+  video_entrega_premio: string;
   fuente: FuenteSorteo;
 }
 

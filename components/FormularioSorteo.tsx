@@ -12,6 +12,7 @@ const valoresVacios: SorteoFormValues = {
   numero_ganador: "",
   premio_principal: "",
   video_url: "",
+  video_entrega_premio: "",
   fuente: "manual",
 };
 
@@ -25,6 +26,7 @@ export function FormularioSorteo({ sorteo }: { sorteo?: Sorteo }) {
           numero_ganador: sorteo.numero_ganador,
           premio_principal: sorteo.premio_principal,
           video_url: sorteo.video_url ?? "",
+          video_entrega_premio: sorteo.video_entrega_premio ?? "",
           fuente: sorteo.fuente,
         }
       : valoresVacios,
@@ -90,9 +92,15 @@ export function FormularioSorteo({ sorteo }: { sorteo?: Sorteo }) {
       />
 
       <Campo
-        label="Link del video (YouTube, opcional)"
+        label="Link del video del sorteo (YouTube, opcional)"
         value={valores.video_url}
         onChange={(v) => actualizar("video_url", v)}
+      />
+
+      <Campo
+        label="Link del video de entrega del premio (YouTube, opcional)"
+        value={valores.video_entrega_premio}
+        onChange={(v) => actualizar("video_entrega_premio", v)}
       />
 
       <div>
