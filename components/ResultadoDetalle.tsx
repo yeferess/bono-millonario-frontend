@@ -20,6 +20,40 @@ function formatearFecha(fecha: string) {
   });
 }
 
+function TarjetaPremio({ premioPrincipal }: { premioPrincipal: string }) {
+  return (
+    <div className="tarjeta text-center">
+      <p className="etiqueta">Premio principal</p>
+      <p className="mt-1 text-2xl font-bold text-neutral-900">$ {premioPrincipal}</p>
+    </div>
+  );
+}
+
+function VideoVertical({
+  idYoutube,
+  titulo,
+  etiqueta,
+}: {
+  idYoutube: string;
+  titulo: string;
+  etiqueta: string;
+}) {
+  return (
+    <div className="tarjeta">
+      <p className="etiqueta mb-2">{etiqueta}</p>
+      <div className="relative mx-auto aspect-[9/16] max-w-xs overflow-hidden rounded-2xl">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${idYoutube}`}
+          title={titulo}
+          className="absolute inset-0 h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
+}
+
 // Muestra el resultado completo de un sorteo: es el componente que ve
 // el usuario final al escanear el QR o al abrir un resultado del historial.
 export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
@@ -27,8 +61,15 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
   const imagenResultado =
     sorteo.imagenes?.find((img) => img.tipo === "resultado") ??
     sorteo.imagenes?.[0];
+  const imagenNumeroGanador = sorteo.imagenes?.find(
+    (img) => img.tipo === "numero_ganador",
+  );
   const imagenGanador = sorteo.imagenes?.find((img) => img.tipo === "ganador");
-  const idYoutube = sorteo.video_url ? extraerIdYoutube(sorteo.video_url) : null;
+  const imagenVendedor = sorteo.imagenes?.find((img) => img.tipo === "vendedor");
+  const idYoutubeSorteo = sorteo.video_url ? extraerIdYoutube(sorteo.video_url) : null;
+  const idYoutubeEntregaPremio = sorteo.video_entrega_premio
+    ? extraerIdYoutube(sorteo.video_entrega_premio)
+    : null;
 
   return (
     <div className="space-y-5">
@@ -43,17 +84,27 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
       </div>
 
       {pendiente ? (
-        <CuentaRegresiva
-          fechaSorteo={sorteo.fecha_sorteo}
-          horaSorteo={sorteo.hora_sorteo}
-        />
+        <>
+          <CuentaRegresiva
+            fechaSorteo={sorteo.fecha_sorteo}
+            horaSorteo={sorteo.hora_sorteo}
+          />
+
+          {sorteo.premio_principal && (
+            <TarjetaPremio premioPrincipal={sorteo.premio_principal} />
+          )}
+        </>
       ) : (
         <>
-          {imagenResultado && (
+          {sorteo.premio_principal && (
+            <TarjetaPremio premioPrincipal={sorteo.premio_principal} />
+          )}
+
+          {imagenNumeroGanador && (
             <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
               <Image
-                src={imagenResultado.url_optimizada || imagenResultado.url_original}
-                alt={`Imagen oficial del resultado de ${sorteo.nombre_juego}`}
+                src={imagenNumeroGanador.url_optimizada || imagenNumeroGanador.url_original}
+                alt={`Número ganador de ${sorteo.nombre_juego}`}
                 width={800}
                 height={800}
                 className="h-auto w-full"
@@ -73,13 +124,6 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
             )}
           </div>
 
-          <div className="tarjeta text-center">
-            <p className="etiqueta">Premio principal</p>
-            <p className="mt-1 text-2xl font-bold text-neutral-900">
-              $ {sorteo.premio_principal}
-            </p>
-          </div>
-
           {imagenGanador && (
             <div className="tarjeta text-center">
               <p className="etiqueta mb-2">Foto del ganador</p>
@@ -95,19 +139,35 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
             </div>
           )}
 
-          {idYoutube && (
-            <div className="tarjeta">
-              <p className="etiqueta mb-2">Video del sorteo</p>
-              <div className="relative aspect-video overflow-hidden rounded-2xl">
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${idYoutube}`}
-                  title={`Video del sorteo ${sorteo.nombre_juego}`}
-                  className="absolute inset-0 h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
+          {imagenVendedor && (
+            <div className="tarjeta text-center">
+              <p className="etiqueta mb-2">Foto del vendedor</p>
+              <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
+                <Image
+                  src={imagenVendedor.url_optimizada || imagenVendedor.url_original}
+                  alt={`Foto del vendedor del boleto ganador de ${sorteo.nombre_juego}`}
+                  width={800}
+                  height={800}
+                  className="h-auto w-full"
                 />
               </div>
             </div>
+          )}
+
+          {idYoutubeSorteo && (
+            <VideoVertical
+              idYoutube={idYoutubeSorteo}
+              titulo={`Video del sorteo ${sorteo.nombre_juego}`}
+              etiqueta="Video del sorteo"
+            />
+          )}
+
+          {idYoutubeEntregaPremio && (
+            <VideoVertical
+              idYoutube={idYoutubeEntregaPremio}
+              titulo={`Video de entrega del premio ${sorteo.nombre_juego}`}
+              etiqueta="Video de entrega del premio"
+            />
           )}
 
           {sorteo.premios_secundarios && sorteo.premios_secundarios.length > 0 && (

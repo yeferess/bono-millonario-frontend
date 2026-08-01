@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { API_V1, backendUrl } from "./config";
 import { COOKIE_ACCESS } from "./auth-server";
-import type { Administrador, LogAuditoria, PaginaHistorial, Sorteo } from "./types";
+import type { Administrador, DisenoBoleto, LogAuditoria, PaginaHistorial, Sorteo } from "./types";
 
 /**
  * Lecturas de datos de administración para SERVER COMPONENTS (páginas del
@@ -107,4 +107,8 @@ export async function obtenerAdministradorAdmin(
 
 export async function obtenerAdministradorActual(): Promise<Administrador> {
   return get<Administrador>(`/administradores/me`);
+}
+
+export async function listarDisenosBoletoAdmin(): Promise<DisenoBoleto[]> {
+  return get<DisenoBoleto[]>(`/disenos-boletos`);
 }
