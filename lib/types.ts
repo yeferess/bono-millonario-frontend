@@ -48,7 +48,7 @@ export interface Sorteo {
   hora_sorteo: string; // HH:mm:ss
   numero_ganador: string;
   serie: string;
-  premio_principal: string;
+  premio: string;
   video_url: string | null;
   video_entrega_premio: string | null;
   estado: EstadoSorteo;

@@ -21,14 +21,14 @@ export function FormularioSorteo({ sorteo }: { sorteo?: Sorteo }) {
   const [valores, setValores] = useState<SorteoFormValues>(
     sorteo
       ? {
-          fecha_sorteo: sorteo.fecha_sorteo,
-          hora_sorteo: sorteo.hora_sorteo,
-          numero_ganador: sorteo.numero_ganador,
-          premio_principal: sorteo.premio_principal,
-          video_url: sorteo.video_url ?? "",
-          video_entrega_premio: sorteo.video_entrega_premio ?? "",
-          fuente: sorteo.fuente,
-        }
+        fecha_sorteo: sorteo.fecha_sorteo,
+        hora_sorteo: sorteo.hora_sorteo,
+        numero_ganador: sorteo.numero_ganador,
+        premio_principal: sorteo.premio_principal,
+        video_url: sorteo.video_url ?? "",
+        video_entrega_premio: sorteo.video_entrega_premio ?? "",
+        fuente: sorteo.fuente,
+      }
       : valoresVacios,
   );
   const [error, setError] = useState<string | null>(null);
@@ -86,7 +86,7 @@ export function FormularioSorteo({ sorteo }: { sorteo?: Sorteo }) {
       />
 
       <Campo
-        label="Premio principal"
+        label="Premio"
         value={valores.premio_principal}
         onChange={(v) => actualizar("premio_principal", v)}
       />

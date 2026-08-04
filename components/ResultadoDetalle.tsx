@@ -23,7 +23,7 @@ function formatearFecha(fecha: string) {
 function TarjetaPremio({ premioPrincipal }: { premioPrincipal: string }) {
   return (
     <div className="tarjeta text-center">
-      <p className="etiqueta">Premio principal</p>
+      <p className="etiqueta">Premio</p>
       <p className="mt-1 text-2xl font-bold text-neutral-900">$ {premioPrincipal}</p>
     </div>
   );
@@ -161,7 +161,6 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
               etiqueta="Video del sorteo"
             />
           )}
-
           {idYoutubeEntregaPremio && (
             <VideoVertical
               idYoutube={idYoutubeEntregaPremio}
