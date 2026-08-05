@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Sorteo } from "@/lib/types";
+import { fraunces } from "@/lib/fonts";
 import { EstadoBadge } from "./EstadoBadge";
 import { CuentaRegresiva } from "./CuentaRegresiva";
 
@@ -79,6 +80,18 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
 
       {pendiente ? (
         <>
+          {imagenSorteo && (
+            <div className="overflow-hidden rounded-2xl border border-[#F7ff00] shadow-sm">
+              <Image
+                src={imagenSorteo.url_optimizada || imagenSorteo.url_original}
+                alt={`Número ganador de ${sorteo.premio_principal}`}
+                width={800}
+                height={800}
+                className="h-auto w-full"
+              />
+            </div>
+          )}
+
           <CuentaRegresiva
             fechaSorteo={sorteo.fecha_sorteo}
             horaSorteo={sorteo.hora_sorteo}
@@ -91,7 +104,7 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
       ) : (
         <>
           {imagenSorteo && (
-            <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-[#F7ff00] shadow-sm">
               <Image
                 src={imagenSorteo.url_optimizada || imagenSorteo.url_original}
                 alt={`Número ganador de ${sorteo.premio_principal}`}
@@ -107,7 +120,7 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
           )}
 
           {imagenNumeroGanador && (
-            <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-[#F7ff00] shadow-sm">
               <Image
                 src={imagenNumeroGanador.url_optimizada || imagenNumeroGanador.url_original}
                 alt={`Número ganador de ${sorteo.nombre_juego}`}
@@ -120,7 +133,9 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
 
           <div className="tarjeta text-center">
             <p className="etiqueta">Número ganador</p>
-            <p className="mt-1 text-3xl font-extrabold tracking-wide text-fuego-600">
+            <p
+              className={`${fraunces.className} mt-1 text-4xl font-black italic tracking-tight text-fuego-600`}
+            >
               {sorteo.numero_ganador}
             </p>
             {sorteo.serie && (
@@ -133,7 +148,7 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
           {imagenGanador && (
             <div className="tarjeta text-center">
               <p className="etiqueta mb-2">Foto del ganador</p>
-              <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
+              <div className="overflow-hidden rounded-2xl border  shadow-sm">
                 <Image
                   src={imagenGanador.url_optimizada || imagenGanador.url_original}
                   alt={`Foto del ganador de ${sorteo.nombre_juego}`}

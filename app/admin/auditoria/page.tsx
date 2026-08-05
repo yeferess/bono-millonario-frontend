@@ -1,5 +1,5 @@
 import { listarAuditoria } from "@/lib/admin-data";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 // Nota importante: este cambio silencia cualquier error de esa llamada (no solo el 404 actual), con el Try
 // catch quitamos cualquier error de respuesta mientras no se construya la vista
 
@@ -29,7 +29,7 @@ export default async function AuditoriaPage({
 
   return (
     <main className="contenedor-pagina">
-      <NavAdmin />
+      <EncabezadoAdmin />
       <h1 className="titulo-seccion mb-4">Registro de auditoría</h1>
 
       {datos === null ? (

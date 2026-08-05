@@ -13,7 +13,7 @@ export default function InicioPage() {
       <main className="contenedor-pagina flex min-h-screen flex-col justify-center">
         <LogoHero />
         <div className="mb-10 text-center">
-          <h1 className="text-3xl font-extrabold text-marca-700">
+          <h1 className="text-3xl font-extrabold text-dorado-800">
             Bono Millonario
           </h1>
           <p className="mt-2 text-lg text-neutral-600">

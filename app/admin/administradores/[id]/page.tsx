@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { obtenerAdministradorAdmin } from "@/lib/admin-data";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 import { Encabezado } from "@/components/Encabezado";
 import { FormularioAdministrador } from "@/components/FormularioAdministrador";
 
@@ -20,7 +20,7 @@ export default async function EditarAdministradorPage({
 
   return (
     <main className="contenedor-pagina">
-      <NavAdmin />
+      <EncabezadoAdmin />
       <Encabezado titulo={administrador.usuario} volverA="/admin/administradores" />
       <FormularioAdministrador administrador={administrador} />
     </main>

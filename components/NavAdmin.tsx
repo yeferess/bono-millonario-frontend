@@ -41,11 +41,10 @@ export function NavAdmin() {
         <Link
           key={enlace.href}
           href={enlace.href}
-          className={`min-h-touch flex-1 whitespace-nowrap rounded-lg px-3 text-center text-base font-semibold leading-[3rem] ${
-            pathname === enlace.href
-              ? "bg-marca-600 text-white"
-              : "text-neutral-700"
-          }`}
+          className={`min-h-touch flex-1 whitespace-nowrap rounded-lg px-3 text-center text-base font-semibold leading-[3rem] ${pathname === enlace.href
+            ? "bg-[#F7ff00] text-green-300"
+            : "text-neutral-700"
+            }`}
         >
           {enlace.label}
         </Link>

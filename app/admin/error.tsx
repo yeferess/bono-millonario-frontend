@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import { Boton } from "@/components/Boton";
-import { LogoHero } from "@/components/LogoHero";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 
 export default function Error({
   error,
@@ -18,8 +17,7 @@ export default function Error({
 
   return (
     <main className="contenedor-pagina">
-      <LogoHero />
-      <NavAdmin />
+      <EncabezadoAdmin />
       <div className="tarjeta space-y-3 text-center">
         <p className="text-lg font-semibold text-neutral-900">
           Ocurrió un error al cargar esta sección

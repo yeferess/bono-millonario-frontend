@@ -1,5 +1,5 @@
 import { listarDisenosBoletoAdmin } from "@/lib/admin-data";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 import { Encabezado } from "@/components/Encabezado";
 import { GaleriaDisenosBoleto } from "@/components/GaleriaDisenosBoleto";
 
@@ -12,7 +12,7 @@ export default async function DisenosBoletoPage() {
 
   return (
     <main className="contenedor-pagina">
-      <NavAdmin />
+      <EncabezadoAdmin />
       <Encabezado titulo="Diseños de boletos" volverA="/admin/dashboard" />
 
       <div className="space-y-4">

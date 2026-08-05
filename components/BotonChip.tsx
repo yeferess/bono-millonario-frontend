@@ -1,14 +1,14 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes } from "react";
 
-type ColorChip = "neutral" | "marca" | "exito" | "advertencia" | "peligro";
+type ColorChip = "neutral" | "dorado" | "exito" | "advertencia" | "peligro";
 
 const clasesBase =
   "min-h-touch inline-flex items-center justify-center rounded-lg px-3 text-base font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100";
 
 const clasesPorColor: Record<ColorChip, string> = {
   neutral: "bg-neutral-100 text-neutral-700",
-  marca: "bg-marca-100 text-marca-700",
+  dorado: "bg-dorado-100 text-dorado-800",
   exito: "bg-green-100 text-green-700",
   advertencia: "bg-yellow-100 text-yellow-700",
   peligro: "bg-red-50 text-red-600",

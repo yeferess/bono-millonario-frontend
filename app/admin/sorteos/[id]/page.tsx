@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { obtenerSorteoAdmin } from "@/lib/admin-data";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 import { Encabezado } from "@/components/Encabezado";
 import { FormularioSorteo } from "@/components/FormularioSorteo";
 import { TarjetaQR } from "@/components/TarjetaQR";
@@ -24,7 +24,7 @@ export default async function EditarSorteoPage({
 
   return (
     <main className="contenedor-pagina">
-      <NavAdmin />
+      <EncabezadoAdmin />
       <Encabezado titulo={sorteo.nombre_juego} volverA="/admin/dashboard" />
 
       <div className="space-y-4">

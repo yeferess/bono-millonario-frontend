@@ -34,7 +34,7 @@ export function TarjetaDisenoBoleto({ diseno }: { diseno: DisenoBoleto }) {
 
   return (
     <div
-      className={`tarjeta space-y-2 ${diseno.activo ? "ring-2 ring-marca-600" : ""}`}
+      className={`tarjeta space-y-2 ${diseno.activo ? "ring-2 ring-dorado-600" : ""}`}
     >
       <div className="relative">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -44,7 +44,7 @@ export function TarjetaDisenoBoleto({ diseno }: { diseno: DisenoBoleto }) {
           className="aspect-video w-full rounded-lg object-cover"
         />
         {diseno.activo && (
-          <span className="absolute left-1 top-1 rounded-full bg-marca-600 px-2 py-0.5 text-xs font-bold text-white shadow-sm">
+          <span className="absolute left-1 top-1 rounded-full bg-dorado-600 px-2 py-0.5 text-xs font-bold text-white shadow-sm">
             Activo
           </span>
         )}
@@ -56,7 +56,7 @@ export function TarjetaDisenoBoleto({ diseno }: { diseno: DisenoBoleto }) {
 
       <div className="flex flex-wrap gap-2">
         {!diseno.activo && (
-          <BotonChip onClick={activar} disabled={cargando !== null} color="marca">
+          <BotonChip onClick={activar} disabled={cargando !== null} color="dorado">
             {cargando === "activar" ? "Activando..." : "Usar este diseño"}
           </BotonChip>
         )}
