@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { adminApi } from "@/lib/admin-api";
 import type { DisenoBoleto } from "@/lib/types";
+import { BotonChip, claseChip } from "./BotonChip";
+import { MensajeError } from "./MensajeError";
 
 export function TarjetaDisenoBoleto({ diseno }: { diseno: DisenoBoleto }) {
   const router = useRouter();
@@ -50,32 +52,24 @@ export function TarjetaDisenoBoleto({ diseno }: { diseno: DisenoBoleto }) {
 
       {diseno.nombre && <p className="truncate text-sm font-semibold">{diseno.nombre}</p>}
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
 
       <div className="flex flex-wrap gap-2">
         {!diseno.activo && (
-          <button
-            onClick={activar}
-            disabled={cargando !== null}
-            className="min-h-touch rounded-lg bg-marca-100 px-3 text-sm font-semibold text-marca-700"
-          >
+          <BotonChip onClick={activar} disabled={cargando !== null} color="marca">
             {cargando === "activar" ? "Activando..." : "Usar este diseño"}
-          </button>
+          </BotonChip>
         )}
         <a
           href={diseno.imagen_url}
           download={`diseno-${diseno.tipo}-${diseno.id}.png`}
-          className="min-h-touch flex items-center rounded-lg bg-neutral-100 px-3 text-sm font-semibold text-neutral-700"
+          className={claseChip("neutral")}
         >
           Descargar
         </a>
-        <button
-          onClick={eliminar}
-          disabled={cargando !== null}
-          className="min-h-touch rounded-lg bg-red-50 px-3 text-sm font-semibold text-red-600"
-        >
+        <BotonChip onClick={eliminar} disabled={cargando !== null} color="peligro">
           {cargando === "eliminar" ? "Eliminando..." : "Eliminar"}
-        </button>
+        </BotonChip>
       </div>
     </div>
   );

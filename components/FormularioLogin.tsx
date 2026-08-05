@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Boton } from "./Boton";
+import { MensajeError } from "./MensajeError";
 
 export function FormularioLogin() {
   const router = useRouter();
@@ -66,7 +67,7 @@ export function FormularioLogin() {
         />
       </div>
 
-      {error && <p className="text-base font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
 
       <Boton type="submit" disabled={cargando}>
         {cargando ? "Ingresando..." : "Ingresar"}

@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Administrador } from "@/lib/types";
 import { adminApi } from "@/lib/admin-api";
+import { BotonChip, BotonChipEnlace } from "./BotonChip";
+import { MensajeError } from "./MensajeError";
 
 function formatearFechaHora(iso: string | null) {
   if (!iso) return "Nunca";
@@ -65,17 +66,14 @@ export function FilaAdministrador({
         </div>
       </div>
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
 
       <div className="flex flex-wrap gap-2">
-        <Link
-          href={`/admin/administradores/${administrador.id}`}
-          className="min-h-touch rounded-lg bg-neutral-100 px-3 text-sm font-semibold leading-[2.75rem]"
-        >
+        <BotonChipEnlace href={`/admin/administradores/${administrador.id}`} color="neutral">
           Editar
-        </Link>
+        </BotonChipEnlace>
 
-        <button
+        <BotonChip
           onClick={alternarActivo}
           disabled={cargando || (esUsuarioActual && administrador.activo)}
           title={
@@ -83,18 +81,14 @@ export function FilaAdministrador({
               ? "No puedes desactivar tu propia cuenta"
               : undefined
           }
-          className={`min-h-touch rounded-lg px-3 text-sm font-semibold ${
-            administrador.activo
-              ? "bg-yellow-100 text-yellow-700"
-              : "bg-green-100 text-green-700"
-          }`}
+          color={administrador.activo ? "advertencia" : "exito"}
         >
           {cargando
             ? "Guardando..."
             : administrador.activo
               ? "Desactivar"
               : "Activar"}
-        </button>
+        </BotonChip>
       </div>
     </div>
   );

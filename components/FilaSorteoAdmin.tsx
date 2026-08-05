@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Sorteo } from "@/lib/types";
 import { adminApi } from "@/lib/admin-api";
 import { EstadoBadge } from "./EstadoBadge";
+import { BotonChip, BotonChipEnlace } from "./BotonChip";
+import { MensajeError } from "./MensajeError";
 
 export function FilaSorteoAdmin({ sorteo }: { sorteo: Sorteo }) {
   const router = useRouter();
@@ -59,56 +60,37 @@ export function FilaSorteoAdmin({ sorteo }: { sorteo: Sorteo }) {
             )}
           </div>
         </div>
-        <p className="shrink-0 text-xl font-extrabold text-marca-700">
+        <p className="shrink-0 text-xl font-extrabold text-fuego-600">
           {sorteo.numero_ganador || "—"}
         </p>
       </div>
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
 
       <div className="flex flex-wrap gap-2">
-        <Link
-          href={`/admin/sorteos/${sorteo.id}`}
-          className="min-h-touch rounded-lg bg-neutral-100 px-3 text-sm font-semibold leading-[2.75rem]"
-        >
+        <BotonChipEnlace href={`/admin/sorteos/${sorteo.id}`} color="neutral">
           Editar
-        </Link>
+        </BotonChipEnlace>
 
         {!sorteo.codigo_qr && (
-          <button
-            onClick={generarQR}
-            disabled={cargando !== null}
-            className="min-h-touch rounded-lg bg-marca-100 px-3 text-sm font-semibold text-marca-700"
-          >
+          <BotonChip onClick={generarQR} disabled={cargando !== null} color="marca">
             {cargando === "qr" ? "Generando..." : "Generar QR"}
-          </button>
+          </BotonChip>
         )}
 
         {sorteo.estado !== "publicado" ? (
-          <button
-            onClick={publicar}
-            disabled={cargando !== null}
-            className="min-h-touch rounded-lg bg-green-100 px-3 text-sm font-semibold text-green-700"
-          >
+          <BotonChip onClick={publicar} disabled={cargando !== null} color="exito">
             {cargando === "publicar" ? "Publicando..." : "Publicar"}
-          </button>
+          </BotonChip>
         ) : (
-          <button
-            onClick={ocultar}
-            disabled={cargando !== null}
-            className="min-h-touch rounded-lg bg-yellow-100 px-3 text-sm font-semibold text-yellow-700"
-          >
+          <BotonChip onClick={ocultar} disabled={cargando !== null} color="advertencia">
             {cargando === "ocultar" ? "Ocultando..." : "Ocultar"}
-          </button>
+          </BotonChip>
         )}
 
-        <button
-          onClick={eliminar}
-          disabled={cargando !== null}
-          className="min-h-touch rounded-lg bg-red-50 px-3 text-sm font-semibold text-red-600"
-        >
+        <BotonChip onClick={eliminar} disabled={cargando !== null} color="peligro">
           {cargando === "eliminar" ? "Eliminando..." : "Eliminar"}
-        </button>
+        </BotonChip>
       </div>
     </div>
   );

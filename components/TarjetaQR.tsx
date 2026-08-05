@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { CodigoQR } from "@/lib/types";
 import { adminApi } from "@/lib/admin-api";
 import { Boton } from "./Boton";
+import { MensajeError } from "./MensajeError";
 
 // Muestra el QR ya generado para el sorteo, o un botón para generarlo.
 // Recordar: el QR se genera UNA sola vez por sorteo, antes de imprimir
@@ -39,9 +40,7 @@ export function TarjetaQR({
         <p className="etiqueta mb-3">
           Este sorteo todavía no tiene código QR
         </p>
-        {error && (
-          <p className="mb-2 text-sm font-medium text-red-600">{error}</p>
-        )}
+        <MensajeError mensaje={error} className="mb-2" />
         <Boton onClick={generar} disabled={generando}>
           {generando ? "Generando..." : "Generar QR"}
         </Boton>

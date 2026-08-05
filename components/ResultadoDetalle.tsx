@@ -58,18 +58,12 @@ function VideoVertical({
 // el usuario final al escanear el QR o al abrir un resultado del historial.
 export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
   const pendiente = sorteo.estado !== "publicado";
-  const imagenResultado =
-    sorteo.imagenes?.find((img) => img.tipo === "resultado") ??
-    sorteo.imagenes?.[0];
-  const imagenNumeroGanador = sorteo.imagenes?.find(
-    (img) => img.tipo === "numero_ganador",
-  );
+  const imagenSorteo = sorteo.imagenes?.find((img) => img.tipo === "sorteo")
+  const imagenNumeroGanador = sorteo.imagenes?.find((img) => img.tipo === "numero_ganador");
   const imagenGanador = sorteo.imagenes?.find((img) => img.tipo === "ganador");
   const imagenVendedor = sorteo.imagenes?.find((img) => img.tipo === "vendedor");
   const idYoutubeSorteo = sorteo.video_url ? extraerIdYoutube(sorteo.video_url) : null;
-  const idYoutubeEntregaPremio = sorteo.video_entrega_premio
-    ? extraerIdYoutube(sorteo.video_entrega_premio)
-    : null;
+  const idYoutubeEntregaPremio = sorteo.video_entrega_premio ? extraerIdYoutube(sorteo.video_entrega_premio) : null;
 
   return (
     <div className="space-y-5">
@@ -96,6 +90,18 @@ export function ResultadoDetalle({ sorteo }: { sorteo: Sorteo }) {
         </>
       ) : (
         <>
+          {imagenSorteo && (
+            <div className="overflow-hidden rounded-2xl border border-neutral-200 shadow-sm">
+              <Image
+                src={imagenSorteo.url_optimizada || imagenSorteo.url_original}
+                alt={`Número ganador de ${sorteo.premio_principal}`}
+                width={800}
+                height={800}
+                className="h-auto w-full"
+              />
+            </div>
+          )}
+
           {sorteo.premio_principal && (
             <TarjetaPremio premioPrincipal={sorteo.premio_principal} />
           )}

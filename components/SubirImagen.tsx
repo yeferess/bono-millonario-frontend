@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { adminApi } from "@/lib/admin-api";
 import type { TipoImagen } from "@/lib/types";
+import { MensajeError } from "./MensajeError";
 
 // Sube una imagen para el sorteo (foto del resultado o foto del ganador,
 // según `tipo`). Se guarda como multipart/form-data; el backend la sube a
@@ -55,7 +56,7 @@ export function SubirImagen({
         className="block w-full text-base"
       />
       {subiendo && <p className="mt-2 text-base text-neutral-500">Subiendo...</p>}
-      {error && <p className="mt-2 text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} className="mt-2" />
     </div>
   );
 }
