@@ -38,7 +38,7 @@ export function FiltroFecha() {
       </div>
       <button
         type="submit"
-        className="min-h-touch rounded-lg bg-marca-600 px-4 font-semibold text-white"
+        className="min-h-touch rounded-lg bg-dorado-600 px-4 font-semibold text-white"
       >
         Buscar
       </button>

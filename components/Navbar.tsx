@@ -5,7 +5,7 @@ import Image from "next/image";
 // propio NavAdmin). Aparece en todas las páginas de cara al usuario final.
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-30 border-b border-black/10 bg-dorado-500  text-neutral-900 antialiased">
+    <header className="sticky top-0 z-30 border-b border-black/10 bg-[#F7ff00]  text-neutral-900 antialiased">
       <div className="mx-auto flex w-full max-w-md items-center justify-between px-4 py-2">
         <Link href="/" className="flex min-h-touch items-center gap-2">
           <Image

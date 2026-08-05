@@ -1,6 +1,5 @@
 import { listarSorteosAdmin } from "@/lib/admin-data";
-import { LogoHero } from "@/components/LogoHero";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 import { FilaSorteoAdmin } from "@/components/FilaSorteoAdmin";
 import { FiltrosSorteosAdmin } from "@/components/FiltrosSorteosAdmin";
 
@@ -20,8 +19,7 @@ export default async function AdminDashboardPage({
 
   return (
     <main className="contenedor-pagina">
-      <LogoHero />
-      <NavAdmin />
+      <EncabezadoAdmin />
       <h1 className="titulo-seccion mb-4">Sorteos ({datos.count})</h1>
 
       <FiltrosSorteosAdmin />

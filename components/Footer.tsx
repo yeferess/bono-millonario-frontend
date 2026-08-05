@@ -52,7 +52,7 @@ function EnlaceLegal({ href, children }: { href: string; children: React.ReactNo
 
 export function Footer() {
   return (
-    <footer className="relative w-full overflow-hidden bg-dorado-500 px-6 pb-8 pt-10 text-noche-900">
+    <footer className="relative w-full overflow-hidden bg-[#F7ff00] px-6 pb-8 pt-10 text-noche-900">
       <div className="relative">
         <p className="text-base font-semibold uppercase tracking-[0.2em] text-fuego-700">
           Resultados oficiales
@@ -106,9 +106,9 @@ export function Footer() {
           Enlaces
         </p>
         <div className="mt-4 flex flex-col gap-4">
-          <EnlaceLegal href="/terminos">Términos y condiciones</EnlaceLegal>
-          <EnlaceLegal href="/privacidad">Política de privacidad</EnlaceLegal>
-          <EnlaceLegal href="/juego-responsable">Juego responsable</EnlaceLegal>
+          <EnlaceLegal href="">Términos y condiciones</EnlaceLegal>
+          <EnlaceLegal href="">Política de privacidad</EnlaceLegal>
+          <EnlaceLegal href="">Juego responsable</EnlaceLegal>
         </div>
 
         <LineaPerforada className="mt-7 mb-6" />

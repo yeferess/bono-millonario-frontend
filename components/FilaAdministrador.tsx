@@ -51,7 +51,7 @@ export function FilaAdministrador({
           </p>
         </div>
         <div className="flex shrink-0 flex-col items-end gap-1">
-          <span className="rounded-full bg-marca-100 px-3 py-1 text-sm font-semibold text-marca-700">
+          <span className="rounded-full bg-dorado-100 px-3 py-1 text-sm font-semibold text-dorado-800">
             {administrador.rol === "superadmin" ? "Superadmin" : "Editor"}
           </span>
           <span

@@ -1,5 +1,5 @@
 import { listarAdministradores, obtenerAdministradorActual } from "@/lib/admin-data";
-import { NavAdmin } from "@/components/NavAdmin";
+import { EncabezadoAdmin } from "@/components/EncabezadoAdmin";
 import { Encabezado } from "@/components/Encabezado";
 import { BotonEnlace } from "@/components/Boton";
 import { FilaAdministrador } from "@/components/FilaAdministrador";
@@ -19,7 +19,7 @@ export default async function AdministradoresPage({
 
   return (
     <main className="contenedor-pagina">
-      <NavAdmin />
+      <EncabezadoAdmin />
       <Encabezado titulo={`Administradores (${datos.count})`} volverA="/admin/dashboard" />
 
       <div className="mb-4">

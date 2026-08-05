@@ -5,14 +5,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        marca: {
-          50: "#fff7ed",
-          100: "#ffedd5",
-          500: "#f97316",
-          600: "#ea580c",
-          700: "#c2410c",
-          900: "#7c2d12",
-        },
         dorado: {
           50: "#FFFBEA",
           100: "#FFF3C4",

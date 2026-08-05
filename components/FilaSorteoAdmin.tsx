@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Sorteo } from "@/lib/types";
 import { adminApi } from "@/lib/admin-api";
+import { fraunces } from "@/lib/fonts";
 import { EstadoBadge } from "./EstadoBadge";
 import { BotonChip, BotonChipEnlace } from "./BotonChip";
 import { MensajeError } from "./MensajeError";
@@ -60,7 +61,7 @@ export function FilaSorteoAdmin({ sorteo }: { sorteo: Sorteo }) {
             )}
           </div>
         </div>
-        <p className="shrink-0 text-xl font-extrabold text-fuego-600">
+        <p className={`${fraunces.className} shrink-0 text-xl font-black italic text-fuego-600`}>
           {sorteo.numero_ganador || "—"}
         </p>
       </div>
@@ -73,7 +74,7 @@ export function FilaSorteoAdmin({ sorteo }: { sorteo: Sorteo }) {
         </BotonChipEnlace>
 
         {!sorteo.codigo_qr && (
-          <BotonChip onClick={generarQR} disabled={cargando !== null} color="marca">
+          <BotonChip onClick={generarQR} disabled={cargando !== null} color="dorado">
             {cargando === "qr" ? "Generando..." : "Generar QR"}
           </BotonChip>
         )}

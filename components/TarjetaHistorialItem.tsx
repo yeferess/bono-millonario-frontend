@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ResultadoHistorialItem } from "@/lib/types";
+import { fraunces } from "@/lib/fonts";
 import { EstadoBadge } from "./EstadoBadge";
 
 function formatearFechaCorta(fecha: string) {
@@ -31,7 +32,7 @@ export function TarjetaHistorialItem({
         </div>
       </div>
       <div className="shrink-0 text-right">
-        <p className="text-2xl font-extrabold text-fuego-600">
+        <p className={`${fraunces.className} text-2xl font-black italic text-fuego-600`}>
           {item.estado === "publicado" ? item.numero_ganador : "—"}
         </p>
       </div>
