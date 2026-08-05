@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { Sorteo, SorteoFormValues } from "@/lib/types";
 import { adminApi } from "@/lib/admin-api";
 import { Boton } from "./Boton";
+import { MensajeError } from "./MensajeError";
 
 const valoresVacios: SorteoFormValues = {
   fecha_sorteo: "",
@@ -117,7 +118,7 @@ export function FormularioSorteo({ sorteo }: { sorteo?: Sorteo }) {
         </select>
       </div>
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
 
       <Boton type="submit" disabled={guardando}>
         {guardando ? "Guardando..." : sorteo ? "Guardar cambios" : "Crear sorteo"}

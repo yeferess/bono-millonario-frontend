@@ -8,7 +8,7 @@ const clasesBase =
 
 const clasesPorVariante: Record<Variante, string> = {
   primario: "bg-dorado-300 text-gray-800 hover:bg-dorado-600",
-  secundario: "bg-green-400 text-neutral-900 hover:bg-neutral-200",
+  secundario: "bg-green-600 text-white hover:bg-green-700",
   peligro: "bg-red-600 text-white hover:bg-red-700",
   fantasma: "bg-transparent text-marca-700 underline underline-offset-4",
 };

@@ -30,7 +30,7 @@ export default async function HistorialPage({
 
         {historial.results.length === 0 ? (
           <p className="tarjeta text-center text-lg text-neutral-600">
-            Aun no tenemos los sorteos de esta fecha!.
+            Aún no tenemos los sorteos de esta fecha.
           </p>
         ) : (
           <div className="space-y-3">

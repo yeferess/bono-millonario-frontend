@@ -4,7 +4,7 @@
 export type EstadoSorteo = "borrador" | "publicado" | "oculto";
 export type FuenteSorteo = "manual" | "ocr_ia";
 export type RolAdmin = "superadmin" | "editor";
-export type TipoImagen = "resultado" | "ganador" | "numero_ganador" | "vendedor";
+export type TipoImagen = "sorteo" | "ganador" | "numero_ganador" | "vendedor";
 export type TipoDisenoBoleto = "delante" | "atras";
 
 export interface PremioSecundario {
@@ -48,7 +48,7 @@ export interface Sorteo {
   hora_sorteo: string; // HH:mm:ss
   numero_ganador: string;
   serie: string;
-  premio: string;
+  premio_principal: string;
   video_url: string | null;
   video_entrega_premio: string | null;
   estado: EstadoSorteo;

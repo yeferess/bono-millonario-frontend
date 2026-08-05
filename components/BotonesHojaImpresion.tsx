@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { adminApi } from "@/lib/admin-api";
 import { Boton } from "./Boton";
+import { MensajeError } from "./MensajeError";
 
 export function BotonesHojaImpresion({
   sorteoId,
@@ -33,7 +34,7 @@ export function BotonesHojaImpresion({
   return (
     <div className="tarjeta space-y-1">
       <p className="etiqueta">Hojas de impresión (24 boletos por hoja)</p>
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
       <div className="flex gap-2">
         <Boton
           variante="secundario"
@@ -49,7 +50,7 @@ export function BotonesHojaImpresion({
           disabled={cargando !== null || !tieneCodigoQR}
           className="flex-1 text-sm"
         >
-          {cargando === "trasera" ? ("Generando...") : (<>Ticket Atras <IconoFlechaAbajo className="h-5 w-5 text-white" /></>)}
+          {cargando === "trasera" ? ("Generando...") : (<>Ticket atrás <IconoFlechaAbajo className="h-5 w-5 text-white" /></>)}
         </Boton>
       </div>
       {!tieneCodigoQR && (

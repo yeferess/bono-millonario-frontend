@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { Administrador, AdministradorFormValues } from "@/lib/types";
 import { AdminApiError, adminApi } from "@/lib/admin-api";
 import { Boton } from "./Boton";
+import { MensajeError } from "./MensajeError";
 
 const valoresVacios: AdministradorFormValues = {
   usuario: "",
@@ -125,7 +126,7 @@ export function FormularioAdministrador({
         />
       </div>
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      <MensajeError mensaje={error} />
 
       <Boton type="submit" disabled={guardando}>
         {guardando

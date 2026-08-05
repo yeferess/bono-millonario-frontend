@@ -31,7 +31,7 @@ export function TarjetaHistorialItem({
         </div>
       </div>
       <div className="shrink-0 text-right">
-        <p className="text-2xl font-extrabold text-marca-700">
+        <p className="text-2xl font-extrabold text-fuego-600">
           {item.estado === "publicado" ? item.numero_ganador : "—"}
         </p>
       </div>

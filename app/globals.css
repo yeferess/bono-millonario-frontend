@@ -20,6 +20,19 @@ a.boton {
   touch-action: manipulation;
 }
 
+/* Foco visible consistente para navegación por teclado y lectores de
+   pantalla — antes no existía ningún estilo de :focus en el sitio. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #de911d;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 @layer components {
   .contenedor-pagina {
     @apply mx-auto w-full max-w-md px-4 pb-10 pt-4;
