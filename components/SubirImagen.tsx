@@ -49,8 +49,7 @@ export function SubirImagen({
       <input
         ref={inputRef}
         type="file"
-        accept="image/*"
-        capture="environment"
+        accept="image/*"        
         onChange={subir}
         disabled={subiendo}
         className="block w-full text-base"
